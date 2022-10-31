@@ -5,7 +5,7 @@ import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 
-import common.IAnimal;
+//import common.IAnimal;
 import common.ICabinet;
 
 public class Client {
@@ -18,17 +18,17 @@ public class Client {
 	public static void main(String[] args) {
 		
 		//POLITIQUE DE SECURITE
-		//System.setProperty("java.security.Policy", "C:\\Users\\mague\\eclipse-workspace\\RMI_Client\\src\\client.policy");
+/*		System.setProperty("java.security.Policy", "file:C:\\Users\\mague\\eclipse-workspace\\Client\\src\\client.policy");
 				
 		//GESTIONNAIRE DE SECURITE
-	/*	try {
+		try {
 			if (System.getSecurityManager() == null) {
 			    System.setSecurityManager(new SecurityManager());
 			}
 		} catch (Exception a) {
 			a.printStackTrace();
-		}*/
-		
+		}
+*/		
 		
 		
 		String host = (args.length < 1)? null : args[0];
@@ -41,9 +41,9 @@ public class Client {
 			 * On utilise la m�thode "lookup" qui envoie une requ�te vers l'annuaire*/
 			ICabinet stub = (ICabinet) registry.lookup("Interface Cabinet");
 			
+			stub.ajouterAnimal("Ayden", "Max", 2, "Chat", 12);
 			stub.ajouterAnimal("Minou", "Hady", 1, "Lapin", 7);
 			//stub.ajouterAnimal("Berger", "Hady", 1, new Dog("Pitbul", 3));
-			stub.ajouterAnimal("Ayden", "Max", 2, "Chat", 12);
 			
 /*			IAnimal stub = (IAnimal) registry.lookup("Interface Animal");
 		
